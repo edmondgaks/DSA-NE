@@ -1,5 +1,8 @@
 #include <iostream>
 #include <limits>
+#include <vector>
+#include <algorithm>
+
 using namespace std;
 
 
@@ -87,7 +90,7 @@ public:
             appointments = next;
         }
     }
-
+    // Checking if the ID of patient exists and will return a boolean value
     bool checkIfPatientIdExists(int patient_id) const{
         PatientsLL *temp = patients;
         while (temp != nullptr) {
@@ -98,7 +101,7 @@ public:
         }
         return false;
     }
-
+    // Checking if the ID of the doctor exists and will return a boolean value
     bool checkIfDoctorIdExists(int doctor_id) const {
         DoctorsLL *temp = doctors;
         while (temp != nullptr) {
@@ -109,7 +112,7 @@ public:
         }
         return false;
     }
-
+    // Checking if the ID of appointment exists and will return a boolean value
     bool checkIfAppointmentIdExists(int appointment_id) const {
         Appointments *temp = appointments;
         while (temp != nullptr) {
@@ -196,7 +199,7 @@ public:
                 savePatient(patient_id, name, dob, gender);
                 break; // break the loop if no exception was thrown
             } catch (const invalid_argument &e) {
-                cout << "INVALID_ARGUMENT_EXCEPTION " << e.what() << endl;
+                cout << "INVALID ARGUMENT " << e.what() << endl;
                 cin.clear(); // clear the error flag
                 // Ignore or clear character from the buffer
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -279,7 +282,7 @@ public:
                 saveAppointment(appointment_id, patient_id, doctor_id, appointment_date);
                 break;
             } catch (const invalid_argument &error) {
-                cout << "INVALID_ARGUMENT_EXCEPTION " << error.what() << endl;
+                cout << "INVALID ARGUMENT " << error.what() << endl;
                 cin.clear();
                 // Ignore or clear character from the buffer
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');

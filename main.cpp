@@ -88,7 +88,7 @@ public:
         }
     }
 
-    bool checkPatientId(int patient_id) const{
+    bool checkIfPatientIdExists(int patient_id) const{
         PatientsLL *temp = patients;
         while (temp != nullptr) {
             if (temp->patient_id == patient_id) {
@@ -99,7 +99,7 @@ public:
         return false;
     }
 
-    bool checkDoctorId(int doctor_id) const {
+    bool checkIfDoctorIdExists(int doctor_id) const {
         DoctorsLL *temp = doctors;
         while (temp != nullptr) {
             if (temp->doctor_id == doctor_id) {
@@ -110,7 +110,7 @@ public:
         return false;
     }
 
-    bool checkAppointmentId(int appointment_id) const {
+    bool checkIfAppointmentIdExists(int appointment_id) const {
         Appointments *temp = appointments;
         while (temp != nullptr) {
             if (temp->appointment_id == appointment_id) {
@@ -172,7 +172,7 @@ public:
                 if (cin.fail()) {
                     throw invalid_argument("Invalid input for patient ID. Please enter a number.");
                 }
-                if(checkPatientId(patient_id)) {
+                if(checkIfPatientIdExists(patient_id)) {
                     throw invalid_argument("Patient ID already exists. Please enter a different ID.");
                 }
                 // Ignore or clear character from the buffer
@@ -216,7 +216,7 @@ public:
                 if (cin.fail()) {
                     throw invalid_argument("Invalid input for doctor ID. Please enter a number.");
                 }
-                if(checkDoctorId(doctor_id)) {
+                if(checkIfDoctorIdExists(doctor_id)) {
                     throw invalid_argument("Doctor ID already exists. Please enter a unique ID.");
                 }
                 // Ignore or clear character from the buffer
@@ -248,7 +248,7 @@ public:
                 if (cin.fail()) {
                     throw invalid_argument("Invalid input for appointment ID. Please enter a number.");
                 }
-                if (checkAppointmentId(appointment_id)) {
+                if (checkIfAppointmentIdExists(appointment_id)) {
                     throw invalid_argument("Appointment ID already exists. Please enter another ID.");
                 }
                 cout << "PATIENT ID: ";
@@ -257,7 +257,7 @@ public:
                     throw invalid_argument("Invalid input for patient ID. Please enter a number.");
                 }
                 // check if the patient ID exists
-                if (!checkPatientId(patient_id)) {
+                if (!checkIfPatientIdExists(patient_id)) {
                     throw invalid_argument("Patient ID does not exist. Please register the patient first.");
                 }
                 cout << "DOCTOR ID: ";
@@ -268,7 +268,7 @@ public:
                 // Ignore or clear character from the buffer
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 // check if the doctor ID exists
-                if (!checkDoctorId(doctor_id)) {
+                if (!checkIfDoctorIdExists(doctor_id)) {
                     throw invalid_argument("Doctor ID does not exist. Please register the doctor first.");
                 }
                 while (true) {
@@ -321,14 +321,8 @@ int main() {
 
     cout << "--------- WELCOME TO RUHENGERI HOSPITAL ------" << endl;
     while (true) {
-        cout << "Menu: " << endl;
-        cout << "1. Register a patient:" << endl;
-        cout << "2. Register a doctor:" << endl;
-        cout << "3. Register an appointment:" << endl;
-        cout << "4. Display Patients:" << endl;
-        cout << "5. Display Doctors:" << endl;
-        cout << "6. Display Appointments:" << endl;
-        cout << "7. Exit" << endl;
+        cout << "Menu: \n 1. Register a patient \n 2. Register a doctor \n 3. Register an appointment \n 4. Display Patients \n 5. Display Doctors \n 6. Display Appointments \n 7. Exit! \n";
+
         cout << "Enter your choice: ";
         cin >> choice;
 
